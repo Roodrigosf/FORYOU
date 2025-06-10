@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Geisiane, com amor</title>
+  <style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffe4e1, #fff0f5);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  overflow: hidden;
+  color: #b30059;
+}
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: 7.5px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+    @keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .slider {
+      width: 500px;
+      height: 300px;
+      overflow: hidden;
+      margin: 30px auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .slides {
+      display:flex;
+      width: auto;
+      height: 100%;
+      height: auto;
+      animation-timing-function: ease-in-out;
+      animation: slide 32s infinite;
+    }
+
+    .slides img {
+      width: 500px;
+      height: 100%;
+      object-fit: cover; /* ou use 'contain' se quiser tudo visível */
+      border-radius: 20px;
+      flex-shrink: 0;
+      animation: fade 32s infinite;
+    }
+    #heart-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.explode-heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: explode 2s ease-out forwards;
+}
+
+.explode-heart::before,
+.explode-heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.explode-heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.explode-heart::after {
+  top: 0;
+  left: 10px;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0.5) rotate(-45deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2) rotate(-45deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0.2) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+    @keyframes slide {
+      0%   { transform: translateX(0); }
+      12.5% { transform: translateX(0); }
+      15%  { transform: translateX(-100%); }
+      25%  { transform: translateX(-100%); }
+      27.5%{ transform: translateX(-200%); }
+      37.5%{ transform: translateX(-200%); }
+      40%  { transform: translateX(-300%); }
+      50%  { transform: translateX(-300%); }
+      52.5%{ transform: translateX(-400%); }
+      62.5%{ transform: translateX(-400%); }
+      65%  { transform: translateX(-500%); }
+      75%  { transform: translateX(-500%); }
+      77.5%{ transform: translateX(-600%); }
+      87.5%{ transform: translateX(-600%); }
+
+
+    }
+
+    .phrases {
+      margin-top: 30px;
+      font-size: 1.5em;
+      line-height: 1.8em;
+    }
+  </style>
+</head>
+<body>
+  <div id="heart-container"></div>
+  <div class="content">
+    <h1>Para Geisiane ❤️</h1>
+    <p>Com amor, Rodrigo</p>
+    <div class="slider">
+      <div class="slides">
+        <img src="img/01.png" alt="Foto 1">
+        <img src="img/02.png" alt="Foto 2">
+        <img src="img/03.png" alt="Foto 3">
+        <img src="img/04.png" alt="Foto 4">
+        <img src="img/05.png" alt="Foto 5">
+        <img src="img/11.png" alt="Foto 6">
+        <img src="img/9.png" alt="Foto 7">
+      </div>
+    </div>
+    <div class="phrases">
+      <p>Você é o melhor presente que a vida me deu.</p>
+      <p>Nos seus olhos, encontrei o meu lar.</p>
+      <p>Com você, cada dia é o Dia dos Namorados.</p>
+      <p>Te amo mais do que palavras podem expressar.</p>
+    </div>
+  </div>
+
+<script>
+  function createExplodingHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('explode-heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = Math.random() * 100 + 'vh';
+    document.getElementById('heart-container').appendChild(heart);
+    
+    setTimeout(() => heart.remove(), 2000);
+  }
+
+  setInterval(createExplodingHeart, 300);
+</script>
+
+</body>
+</html>
+
+
+
+
